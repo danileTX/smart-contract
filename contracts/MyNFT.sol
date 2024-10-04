@@ -93,8 +93,6 @@ contract ERC721 is IERC721 {
 
     function approve(address to, uint256 tokenId) external {
         address owner = _ownerOf[tokenId];
-        // 自己的token，已经在授权白名单上的地址，可以被授权。
-        // 访问这个函数的账户，为请求授权人。所以approve算是请求授权的方法。
         require(
             msg.sender == owner || isApprovedForAll[owner][msg.sender],
             "not authorized"
